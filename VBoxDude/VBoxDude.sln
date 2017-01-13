@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VBoxDude", "VBoxDude\VBoxDude.csproj", "{137B713E-5EB9-4D0A-907C-99E9C5BBF74E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VBoxDude.Test", "VBoxDude.Test\VBoxDude.Test.csproj", "{20995AEF-5B96-477C-ABDE-B6F3FEFE8069}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{137B713E-5EB9-4D0A-907C-99E9C5BBF74E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{137B713E-5EB9-4D0A-907C-99E9C5BBF74E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{137B713E-5EB9-4D0A-907C-99E9C5BBF74E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{137B713E-5EB9-4D0A-907C-99E9C5BBF74E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20995AEF-5B96-477C-ABDE-B6F3FEFE8069}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20995AEF-5B96-477C-ABDE-B6F3FEFE8069}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20995AEF-5B96-477C-ABDE-B6F3FEFE8069}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20995AEF-5B96-477C-ABDE-B6F3FEFE8069}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
