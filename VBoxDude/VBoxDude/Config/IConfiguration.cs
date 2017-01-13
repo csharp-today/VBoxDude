@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VBoxDude
+namespace VBoxDude.Config
 {
-    public class Class1
+    public interface IConfiguration
     {
+        string VirtualBoxHeadlessApp { get; }
     }
 }
