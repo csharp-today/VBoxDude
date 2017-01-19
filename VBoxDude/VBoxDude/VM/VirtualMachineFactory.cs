@@ -30,7 +30,7 @@ namespace VBoxDude.VM
             return vm;
         }
 
-        internal VirtualMachine ImportFromFile(string filePath, string name)
+        public VirtualMachine ImportFromFile(string filePath, string name)
         {
             var vm = _importer.Import(filePath, name);
             return vm;
