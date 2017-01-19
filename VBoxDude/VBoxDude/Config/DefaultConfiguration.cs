@@ -12,5 +12,6 @@ namespace VBoxDude.Config
         private const string _virtualBoxPath = @"C:\Program Files\Oracle\VirtualBox";
 
         public string VirtualBoxHeadlessApp { get; } = Path.Combine(_virtualBoxPath, "VBoxHeadless.exe");
+        public string VirtualBoxManagerApp { get; } = Path.Combine(_virtualBoxPath, "VBoxManage.exe");
     }
 }

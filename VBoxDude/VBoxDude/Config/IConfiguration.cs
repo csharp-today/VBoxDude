@@ -9,5 +9,6 @@ namespace VBoxDude.Config
     public interface IConfiguration
     {
         string VirtualBoxHeadlessApp { get; }
+        string VirtualBoxManagerApp { get; }
     }
 }

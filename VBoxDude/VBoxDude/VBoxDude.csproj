@@ -59,12 +59,16 @@
     <Compile Include="Config\DefaultConfiguration.cs" />
     <Compile Include="Config\GlobalContainer.cs" />
     <Compile Include="Config\IConfiguration.cs" />
+    <Compile Include="FileSystem\FileSystem.cs" />
+    <Compile Include="FileSystem\IFileSystem.cs" />
     <Compile Include="PorcessRunner\IProcessRunner.cs" />
     <Compile Include="PorcessRunner\Runner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VirtualBoxDude.cs" />
+    <Compile Include="VM\IVirtualMachineImporter.cs" />
     <Compile Include="VM\VirtualMachine.cs" />
     <Compile Include="VM\VirtualMachineFactory.cs" />
+    <Compile Include="VM\VirtualMachineImporter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

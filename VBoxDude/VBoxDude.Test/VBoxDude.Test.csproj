@@ -75,8 +75,10 @@
   </Choose>
   <ItemGroup>
     <Compile Include="ProcessRunner\ProcessRunnerTest.cs" />
+    <Compile Include="TestAssistant.cs" />
     <Compile Include="TestContainer.cs" />
     <Compile Include="VM\VirtualMachineFactoryTest.cs" />
+    <Compile Include="VM\VirtualMachineImporterTest.cs" />
     <Compile Include="VM\VirtualMachineTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

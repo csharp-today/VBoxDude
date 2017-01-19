@@ -26,5 +26,25 @@ namespace VBoxDude.Test.VM
             Assert.IsNotNull(vm);
             Assert.AreEqual(Name, vm.Name);
         }
+
+        [TestMethod]
+        public void Import_VM_From_File()
+        {
+            // Arrange
+            var test = new TestContainer();
+
+            const string FilePath = "file-path", Name = "a-name";
+            var expectedVirtualMachine = new VirtualMachine(null, null, Name);
+            test.VirtualMachineImporter.Setup(m => m.Import(FilePath, Name))
+                .Returns(expectedVirtualMachine);
+
+            var factory = test.RegisterAll().Resolve<VirtualMachineFactory>();
+
+            // Act
+            VirtualMachine vm = factory.ImportFromFile(FilePath, Name);
+
+            // Assert
+            Assert.AreEqual(expectedVirtualMachine, vm);
+        }
     }
 }

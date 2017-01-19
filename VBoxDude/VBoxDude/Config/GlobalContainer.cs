@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VBoxDude.FileSystem;
 using VBoxDude.PorcessRunner;
+using VBoxDude.VM;
 
 namespace VBoxDude.Config
 {
@@ -13,7 +15,9 @@ namespace VBoxDude.Config
         public GlobalContainer()
         {
             this.RegisterType<IConfiguration, DefaultConfiguration>();
+            this.RegisterType<IFileSystem, FileSystem.FileSystem>();
             this.RegisterType<IProcessRunner, Runner>();
+            this.RegisterType<IVirtualMachineImporter, VirtualMachineImporter>();
         }
     }
 }
