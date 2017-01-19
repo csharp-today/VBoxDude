@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Practices.Unity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,17 +12,30 @@ namespace VBoxDude.VM
     public class VirtualMachineFactory
     {
         private IConfiguration _config;
+        private IUnityContainer _container;
         private IVirtualMachineImporter _importer;
         private IProcessRunner _runner;
 
+        private IVirtualMachineImporter Importer
+        {
+            get
+            {
+                if (_importer == null)
+                {
+                    _importer = _container.Resolve<IVirtualMachineImporter>();
+                }
+                return _importer;
+            }
+        }
+
         public VirtualMachineFactory(
             IConfiguration config,
-            IProcessRunner runner,
-            IVirtualMachineImporter importer)
+            IUnityContainer container,
+            IProcessRunner runner)
         {
             _config = config;
+            _container = container;
             _runner = runner;
-            _importer = importer;
         }
 
         public VirtualMachine CreateFromName(string name)
@@ -32,7 +46,7 @@ namespace VBoxDude.VM
 
         public VirtualMachine ImportFromFile(string filePath, string name)
         {
-            var vm = _importer.Import(filePath, name);
+            var vm = Importer.Import(filePath, name);
             return vm;
         }
     }

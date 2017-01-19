@@ -17,6 +17,7 @@ namespace VBoxDude.Config
             this.RegisterType<IConfiguration, DefaultConfiguration>();
             this.RegisterType<IFileSystem, FileSystem.FileSystem>();
             this.RegisterType<IProcessRunner, Runner>();
+            this.RegisterInstance<IUnityContainer>(this);
             this.RegisterType<IVirtualMachineImporter, VirtualMachineImporter>();
         }
     }

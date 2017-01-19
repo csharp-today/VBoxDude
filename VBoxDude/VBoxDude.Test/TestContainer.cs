@@ -24,6 +24,7 @@ namespace VBoxDude.Test
             this.RegisterInstance(Config.Object);
             this.RegisterInstance(FileSystem.Object);
             this.RegisterInstance(ProcessRunner.Object);
+            this.RegisterInstance<IUnityContainer>(this);
             this.RegisterInstance(VirtualMachineImporter.Object);
             return this;
         }
