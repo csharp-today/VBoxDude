@@ -86,7 +86,7 @@ namespace VBoxDude.Test.VM
             var importer = test.RegisterAll().Resolve<VirtualMachineImporter>();
 
             const string AppPath = "expected=app.exe";
-            const string ExpectedArgs = "import " + AppPath;
+            const string ExpectedArgs = "import \"" + AppPath + "\"";
 
             // Act
             importer.Import(AppPath, "some-name");

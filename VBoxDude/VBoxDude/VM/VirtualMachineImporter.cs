@@ -37,7 +37,7 @@ namespace VBoxDude.VM
 
             _runner.RunAndWait(
                 _config.VirtualBoxManagerApp,
-                $"import {filePath} --vsys 0 {newMachineName}");
+                $"import \"{filePath}\" --vsys 0 {newMachineName}");
 
             var vm = _vmFactory.CreateFromName(newMachineName);
             return vm;
