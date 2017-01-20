@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RunProcessAsTask;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -9,29 +10,34 @@ namespace VBoxDude.PorcessRunner
 {
     internal class Runner : IProcessRunner
     {
-        public Process RunAndContinue(string appPath, string arguments)
+        public async Task RunAsync(string appPath, string arguments)
         {
-            var proc = Process.Start(
-                new ProcessStartInfo()
+            var result = await RunAndContinue(appPath, arguments);
+            if (result.ExitCode != 0)
+            {
+                var msg = new StringBuilder();
+                msg.Append("Process failed - exit code: ");
+                msg.Append(result.ExitCode);
+                throw new Exception(msg.ToString());
+            }
+        }
+
+        public Task<ProcessResults> RunAndContinue(string appPath, string arguments)
+        {
+            var task = ProcessEx.RunAsync(new ProcessStartInfo()
                 {
                     FileName = appPath,
                     Arguments = arguments,
                     CreateNoWindow = true,
                     UseShellExecute = false
                 });
-            return proc;
+            return task;
         }
 
         public void RunAndWait(string appPath, string arguments)
         {
-            using (var proc = RunAndContinue(appPath, arguments))
-            {
-                proc.WaitForExit();
-                if (proc.ExitCode != 0)
-                {
-                    throw new Exception("Process failed - exit code: " + proc.ExitCode);
-                }
-            }
+            var task = RunAsync(appPath, arguments);
+            task.Wait();
         }
     }
 }
