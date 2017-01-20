@@ -18,6 +18,13 @@ namespace VBoxDude.PorcessRunner
                 var msg = new StringBuilder();
                 msg.Append("Process failed - exit code: ");
                 msg.Append(result.ExitCode);
+                msg.Append(", details:");
+                msg.Append(Environment.NewLine);
+                msg.Append("ERROR OUTPUT: ");
+                msg.Append(string.Join(Environment.NewLine, result.StandardError));
+                msg.Append(Environment.NewLine);
+                msg.Append("STANDARD OUTPUT: ");
+                msg.Append(string.Join(Environment.NewLine, result.StandardOutput));
                 throw new Exception(msg.ToString());
             }
         }
