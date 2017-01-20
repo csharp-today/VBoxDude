@@ -20,6 +20,12 @@ namespace VBoxDude.PorcessRunner
                 msg.Append(result.ExitCode);
                 msg.Append(", details:");
                 msg.Append(Environment.NewLine);
+                msg.Append("Application path: ");
+                msg.Append(appPath);
+                msg.Append(Environment.NewLine);
+                msg.Append("Application arguments: ");
+                msg.Append(arguments);
+                msg.Append(Environment.NewLine);
                 msg.Append("ERROR OUTPUT: ");
                 msg.Append(string.Join(Environment.NewLine, result.StandardError));
                 msg.Append(Environment.NewLine);
