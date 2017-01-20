@@ -108,14 +108,15 @@ namespace VBoxDude.Test.VM
 
             var importer = test.RegisterAll().Resolve<VirtualMachineImporter>();
 
-            const string ExpectedMachineName = "new-machine-name";
+            const string MachineName = "new-machine-name";
+            const string ExpectedMachineName = "--vmname " + MachineName;
 
             // Act
-            importer.Import("some-path", ExpectedMachineName);
+            importer.Import("some-path", MachineName);
 
             // Assert
             Assert.IsNotNull(args);
-            Assert.IsTrue(args.EndsWith(ExpectedMachineName));
+            Assert.IsTrue(args.Contains(ExpectedMachineName));
         }
 
         [TestMethod]
