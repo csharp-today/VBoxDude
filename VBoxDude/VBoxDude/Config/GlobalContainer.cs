@@ -15,12 +15,22 @@ namespace VBoxDude.Config
     {
         public GlobalContainer()
         {
+            this.RegisterInstance<IUnityContainer>(this);
+
             this.RegisterType<IConfiguration, DefaultConfiguration>();
             this.RegisterType<IDiskPathGetter, DiskPathGetter>();
             this.RegisterType<IFileSystem, FileSystem.FileSystem>();
             this.RegisterType<IProcessRunner, Runner>();
-            this.RegisterInstance<IUnityContainer>(this);
             this.RegisterType<IVirtualMachineImporter, VirtualMachineImporter>();
+
+            this.RegisterType<VirtualMachineFactory>(new InjectionFactory(c =>
+            {
+                return new VirtualMachineFactory(
+                    c.Resolve<IConfiguration>(),
+                    c.Resolve<IUnityContainer>(),
+                    c.Resolve<IProcessRunner>(),
+                    c.Resolve<IDiskPathGetter>());
+            }));
         }
     }
 }
