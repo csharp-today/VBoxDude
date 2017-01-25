@@ -20,7 +20,7 @@ namespace VBoxDude.Test.VM
             const string MachineName = "some-name";
             const string ExpectedPath = "some-path";
             bool called = false;
-            test.DiskPathGetter.Setup(m => m.GetDiskPathAsync(MachineName))
+            test.DiskPathGetter.Setup(m => m.GetDiskPathsAsync(MachineName))
                 .Callback(() => called = true)
                 .Returns(Task.FromResult(new[] { ExpectedPath }.AsEnumerable()));
 
@@ -29,7 +29,7 @@ namespace VBoxDude.Test.VM
                 .CreateFromName(MachineName);
 
             // Act
-            var pathes = await vm.GetDiskPathes();
+            var pathes = await vm.GetDiskPathsAsync();
 
             // Assert
             Assert.IsTrue(called);

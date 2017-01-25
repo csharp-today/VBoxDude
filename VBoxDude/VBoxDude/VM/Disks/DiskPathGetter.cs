@@ -20,7 +20,7 @@ namespace VBoxDude.VM.Disks
             _runner = runner;
         }
 
-        public async Task<IEnumerable<string>> GetDiskPathAsync(string machineName)
+        public async Task<IEnumerable<string>> GetDiskPathsAsync(string machineName)
         {
             var args = $"showvminfo {machineName} --machinereadable";
             var result = await _runner.RunAsync(_config.VirtualBoxManagerApp, args);

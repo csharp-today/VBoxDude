@@ -33,7 +33,7 @@ firmware = ""BIOS""");
             var getter = test.RegisterAll().Resolve<DiskPathGetter>();
 
             // Act
-            var pathes = await getter.GetDiskPathAsync("some-name");
+            var pathes = await getter.GetDiskPathsAsync("some-name");
 
             // Assert
             Assert.IsNotNull(pathes);
@@ -56,7 +56,7 @@ storagecontrollerbootable0 = ""on""
             var getter = test.RegisterAll().Resolve<DiskPathGetter>();
 
             // Act
-            var pathes = await getter.GetDiskPathAsync("some-name");
+            var pathes = await getter.GetDiskPathsAsync("some-name");
 
             // Assert
             Assert.IsNotNull(pathes);
@@ -101,7 +101,7 @@ storagecontrollerbootable0 = ""on""
             const string ExpectedMachineName = "some-name";
 
             // Act
-            await getter.GetDiskPathAsync(ExpectedMachineName);
+            await getter.GetDiskPathsAsync(ExpectedMachineName);
 
             // Assert
             Assert.AreEqual(ManagerPath, appPath);
@@ -132,7 +132,7 @@ storagecontrollerbootable0 = ""on""
             var getter = test.RegisterAll().Resolve<DiskPathGetter>();
 
             // Act
-            var pathes = await getter.GetDiskPathAsync("some-name");
+            var pathes = await getter.GetDiskPathsAsync("some-name");
 
             // Assert
             Assert.IsNotNull(pathes);

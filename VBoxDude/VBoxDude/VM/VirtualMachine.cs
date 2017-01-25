@@ -29,9 +29,9 @@ namespace VBoxDude.VM
             Name = name;
         }
 
-        public async Task<IEnumerable<string>> GetDiskPathes()
+        public async Task<IEnumerable<string>> GetDiskPathsAsync()
         {
-            return await _pathGetter.GetDiskPathAsync(Name);
+            return await _pathGetter.GetDiskPathsAsync(Name);
         }
 
         public void Start()
