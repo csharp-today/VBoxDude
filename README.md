@@ -1,5 +1,13 @@
 # VBoxDude
 
+Version 0.0.0.5 - Fix method names
+
+Version 0.0.0.4 - Get virtual disk paths
+
+```c#
+IEnumerable<string> listOfDiskPaths = await new VirtualBoxDude().VMFactory.CreateFromName("VirtualMachineName").GetDiskPathsAsync();
+```
+
 Version 0.0.0.3 - Import virtual machine from file
 
 ```c#
