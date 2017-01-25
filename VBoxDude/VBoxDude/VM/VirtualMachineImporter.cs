@@ -12,7 +12,7 @@ namespace VBoxDude.VM
         private IProcessRunner _runner;
         private VirtualMachineFactory _vmFactory;
 
-        public VirtualMachineImporter(
+        internal VirtualMachineImporter(
             IConfiguration config,
             IFileSystem fileSystem,
             IProcessRunner runner,

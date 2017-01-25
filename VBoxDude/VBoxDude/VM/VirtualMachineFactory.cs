@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using VBoxDude.Config;
 using VBoxDude.PorcessRunner;
+using VBoxDude.VM.Disks;
 
 namespace VBoxDude.VM
 {
@@ -13,6 +14,7 @@ namespace VBoxDude.VM
     {
         private IConfiguration _config;
         private IUnityContainer _container;
+        private IDiskPathGetter _pathGetter;
         private IVirtualMachineImporter _importer;
         private IProcessRunner _runner;
 
@@ -28,19 +30,21 @@ namespace VBoxDude.VM
             }
         }
 
-        public VirtualMachineFactory(
+        internal VirtualMachineFactory(
             IConfiguration config,
             IUnityContainer container,
-            IProcessRunner runner)
+            IProcessRunner runner,
+            IDiskPathGetter pathGetter)
         {
             _config = config;
             _container = container;
             _runner = runner;
+            _pathGetter = pathGetter;
         }
 
         public VirtualMachine CreateFromName(string name)
         {
-            var vm = new VirtualMachine(_config, _runner, name);
+            var vm = new VirtualMachine(_config, _runner, _pathGetter, name);
             return vm;
         }
 

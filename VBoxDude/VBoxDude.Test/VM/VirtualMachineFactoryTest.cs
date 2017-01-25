@@ -34,7 +34,7 @@ namespace VBoxDude.Test.VM
             var test = new TestContainer();
 
             const string FilePath = "file-path", Name = "a-name";
-            var expectedVirtualMachine = new VirtualMachine(null, null, Name);
+            var expectedVirtualMachine = new VirtualMachine(null, null, null, Name);
             test.VirtualMachineImporter.Setup(m => m.Import(FilePath, Name))
                 .Returns(expectedVirtualMachine);
 

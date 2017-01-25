@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace VBoxDude.Config
 {
-    class DefaultConfiguration : IConfiguration
+    public class DefaultConfiguration : IConfiguration
     {
         private const string _virtualBoxPath = @"C:\Program Files\Oracle\VirtualBox";
 

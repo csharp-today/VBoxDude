@@ -10,7 +10,7 @@ namespace VBoxDude.PorcessRunner
 {
     internal class Runner : IProcessRunner
     {
-        public async Task RunAsync(string appPath, string arguments)
+        public async Task<IResult> RunAsync(string appPath, string arguments)
         {
             var result = await RunAndContinue(appPath, arguments);
             if (result.ExitCode != 0)
@@ -33,24 +33,35 @@ namespace VBoxDude.PorcessRunner
                 msg.Append(string.Join(Environment.NewLine, result.StandardOutput));
                 throw new Exception(msg.ToString());
             }
+            return result;
         }
 
-        public Task<ProcessResults> RunAndContinue(string appPath, string arguments)
+        public Task<IResult> RunAndContinue(string appPath, string arguments)
         {
             var task = ProcessEx.RunAsync(new ProcessStartInfo()
+            {
+                FileName = appPath,
+                Arguments = arguments,
+                CreateNoWindow = true,
+                UseShellExecute = false
+            }).ContinueWith(new Func<Task<ProcessResults>, IResult>(t =>
+            {
+                ProcessResults procResult = t.Result;
+                return new Result
                 {
-                    FileName = appPath,
-                    Arguments = arguments,
-                    CreateNoWindow = true,
-                    UseShellExecute = false
-                });
+                    ExitCode = procResult.ExitCode,
+                    StandardError = procResult.StandardError,
+                    StandardOutput = procResult.StandardOutput
+                };
+            }));
             return task;
         }
 
-        public void RunAndWait(string appPath, string arguments)
+        public IResult RunAndWait(string appPath, string arguments)
         {
             var task = RunAsync(appPath, arguments);
-            task.Wait();
+            var result = task.Result;
+            return result;
         }
     }
 }

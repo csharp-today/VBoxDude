@@ -1,6 +1,6 @@
 ﻿namespace VBoxDude.VM
 {
-    public interface IVirtualMachineImporter
+    internal interface IVirtualMachineImporter
     {
         VirtualMachine Import(string filePath, string newMachineName);
     }

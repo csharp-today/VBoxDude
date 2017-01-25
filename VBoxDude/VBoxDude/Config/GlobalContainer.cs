@@ -7,14 +7,16 @@ using System.Threading.Tasks;
 using VBoxDude.FileSystem;
 using VBoxDude.PorcessRunner;
 using VBoxDude.VM;
+using VBoxDude.VM.Disks;
 
 namespace VBoxDude.Config
 {
-    class GlobalContainer : UnityContainer
+    internal class GlobalContainer : UnityContainer
     {
         public GlobalContainer()
         {
             this.RegisterType<IConfiguration, DefaultConfiguration>();
+            this.RegisterType<IDiskPathGetter, DiskPathGetter>();
             this.RegisterType<IFileSystem, FileSystem.FileSystem>();
             this.RegisterType<IProcessRunner, Runner>();
             this.RegisterInstance<IUnityContainer>(this);

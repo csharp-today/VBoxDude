@@ -3,12 +3,41 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using VBoxDude.VM;
 using VBoxDude.PorcessRunner;
 using Microsoft.Practices.Unity;
+using System.Threading.Tasks;
+using System.Linq;
 
 namespace VBoxDude.Test.VM
 {
     [TestClass]
     public class VirtualMachineTest
     {
+        [TestMethod]
+        public async Task GetPath_Should_Call_IDiskPathGetter()
+        {
+            // Arrange
+            var test = new TestContainer();
+
+            const string MachineName = "some-name";
+            const string ExpectedPath = "some-path";
+            bool called = false;
+            test.DiskPathGetter.Setup(m => m.GetDiskPathAsync(MachineName))
+                .Callback(() => called = true)
+                .Returns(Task.FromResult(new[] { ExpectedPath }.AsEnumerable()));
+
+            var vm = test.RegisterAll()
+                .Resolve<VirtualMachineFactory>()
+                .CreateFromName(MachineName);
+
+            // Act
+            var pathes = await vm.GetDiskPathes();
+
+            // Assert
+            Assert.IsTrue(called);
+            Assert.IsNotNull(pathes);
+            Assert.AreEqual(1, pathes.Count());
+            Assert.AreEqual(ExpectedPath, pathes.First());
+        }
+
         [TestMethod]
         public void Should_Have_ProcessRunner()
         {

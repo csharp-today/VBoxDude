@@ -4,10 +4,10 @@ using System.Threading.Tasks;
 
 namespace VBoxDude.PorcessRunner
 {
-    public interface IProcessRunner
+    internal interface IProcessRunner
     {
-        Task RunAsync(string appPath, string arguments);
-        Task<ProcessResults> RunAndContinue(string appPath, string arguments);
-        void RunAndWait(string appPath, string arguments);
+        Task<IResult> RunAsync(string appPath, string arguments);
+        Task<IResult> RunAndContinue(string appPath, string arguments);
+        IResult RunAndWait(string appPath, string arguments);
     }
 }
