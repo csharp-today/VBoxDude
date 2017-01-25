@@ -78,6 +78,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Config\GlobalContainerTest.cs" />
     <Compile Include="ProcessRunner\ProcessRunnerTest.cs" />
     <Compile Include="TestAssistant.cs" />
     <Compile Include="TestContainer.cs" />
