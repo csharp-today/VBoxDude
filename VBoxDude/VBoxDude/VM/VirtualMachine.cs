@@ -37,7 +37,7 @@ namespace VBoxDude.VM
             return await _pathGetter.GetDiskPathsAsync(Name);
         }
 
-        internal async Task<string> GetDiskUuidAsync(string filePath)
+        public async Task<string> GetDiskUuidAsync(string filePath)
         {
             return await _uuidGetter.GetDiskUuidAsync(filePath);
         }
