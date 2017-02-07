@@ -1,5 +1,13 @@
 # VBoxDude
 
+Version 0.0.0.6 - Add support for resolving disk UUID
+
+```c#
+    var vm = new VirtualBoxDude().VMFactory.CreateFromName("VirtualMachineName");
+    var diskPaths = await vm.GetDiskPathsAsync();
+    string diskUUID = await vm.GetDiskUuidAsync(diskPaths.First());
+```
+
 Version 0.0.0.5 - Fix method names
 
 Version 0.0.0.4 - Get virtual disk paths
