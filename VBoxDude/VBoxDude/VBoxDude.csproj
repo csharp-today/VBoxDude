@@ -67,12 +67,14 @@
     <Compile Include="FileSystem\IFileSystem.cs" />
     <Compile Include="PorcessRunner\IResult.cs" />
     <Compile Include="PorcessRunner\Result.cs" />
+    <Compile Include="VM\Disks\DiskUuidGetter.cs" />
     <Compile Include="VM\Disks\IDiskPathGetter.cs" />
     <Compile Include="PorcessRunner\IProcessRunner.cs" />
     <Compile Include="PorcessRunner\Runner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VirtualBoxDude.cs" />
     <Compile Include="VM\Disks\DiskPathGetter.cs" />
+    <Compile Include="VM\Disks\IDiskUuidGetter.cs" />
     <Compile Include="VM\IVirtualMachineImporter.cs" />
     <Compile Include="VM\VirtualMachine.cs" />
     <Compile Include="VM\VirtualMachineFactory.cs" />

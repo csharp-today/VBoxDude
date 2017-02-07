@@ -83,6 +83,7 @@
     <Compile Include="TestAssistant.cs" />
     <Compile Include="TestContainer.cs" />
     <Compile Include="VM\Disks\DiskPathGetterTest.cs" />
+    <Compile Include="VM\Disks\DiskUuidGetterTest.cs" />
     <Compile Include="VM\VirtualMachineFactoryTest.cs" />
     <Compile Include="VM\VirtualMachineImporterTest.cs" />
     <Compile Include="VM\VirtualMachineTest.cs" />

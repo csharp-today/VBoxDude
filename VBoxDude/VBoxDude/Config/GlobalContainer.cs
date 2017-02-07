@@ -17,6 +17,7 @@ namespace VBoxDude.Config
         {
             this.RegisterType<IConfiguration, DefaultConfiguration>();
             this.RegisterType<IDiskPathGetter, DiskPathGetter>();
+            this.RegisterType<IDiskUuidGetter, DiskUuidGetter>();
             this.RegisterType<IFileSystem, FileSystem.FileSystem>();
             this.RegisterType<IProcessRunner, Runner>();
 
@@ -26,7 +27,8 @@ namespace VBoxDude.Config
                     c.Resolve<IConfiguration>(),
                     c.Resolve<IUnityContainer>(),
                     c.Resolve<IProcessRunner>(),
-                    c.Resolve<IDiskPathGetter>());
+                    c.Resolve<IDiskPathGetter>(),
+                    c.Resolve<IDiskUuidGetter>());
             }));
             this.RegisterType<IVirtualMachineImporter>(new InjectionFactory(c =>
             {

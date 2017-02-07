@@ -21,5 +21,18 @@ namespace VBoxDude.Test
                 return ex;
             }
         }
+
+        public static async Task<Exception> CatchExceptionAsync(Task task)
+        {
+            try
+            {
+                await task;
+                return null;
+            }
+            catch (Exception ex)
+            {
+                return ex;
+            }
+        }
     }
 }

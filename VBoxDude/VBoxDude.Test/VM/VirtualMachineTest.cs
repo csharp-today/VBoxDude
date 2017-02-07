@@ -12,6 +12,28 @@ namespace VBoxDude.Test.VM
     public class VirtualMachineTest
     {
         [TestMethod]
+        public async Task GetDiskUuid_Should_Call_IDiskUuidGetter()
+        {
+            // Arrange
+            var test = new TestContainer();
+
+            const string ExpectedPath = "some-path.vhd";
+            const string ExpectedUuid = "12345";
+            test.DiskUuidGetter.Setup(m => m.GetDiskUuidAsync(ExpectedPath))
+                .Returns(Task.FromResult(ExpectedUuid));
+
+            var vm = test.RegisterAll()
+                .Resolve<VirtualMachineFactory>()
+                .CreateFromName("a-name");
+
+            // Act
+            var uuid = await vm.GetDiskUuidAsync(ExpectedPath);
+
+            // Assert
+            Assert.AreEqual(ExpectedUuid, uuid);
+        }
+
+        [TestMethod]
         public async Task GetPath_Should_Call_IDiskPathGetter()
         {
             // Arrange

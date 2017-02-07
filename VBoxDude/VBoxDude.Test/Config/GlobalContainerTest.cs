@@ -29,6 +29,12 @@ namespace VBoxDude.Test.Config
         }
 
         [TestMethod]
+        public void Resolve_IDiskUuidGetter()
+        {
+            TestResolve<IDiskUuidGetter>();
+        }
+
+        [TestMethod]
         public void Resolve_IFileSystem()
         {
             TestResolve<IFileSystem>();

@@ -13,6 +13,7 @@ namespace VBoxDude.VM
     {
         private IConfiguration _config;
         private IDiskPathGetter _pathGetter;
+        private IDiskUuidGetter _uuidGetter;
 
         public string Name { get; }
         internal IProcessRunner ProcessRunner { get; }
@@ -21,17 +22,24 @@ namespace VBoxDude.VM
             IConfiguration config,
             IProcessRunner runner,
             IDiskPathGetter pathGetter,
+            IDiskUuidGetter uuidGetter,
             string name)
         {
             _config = config;
             ProcessRunner = runner;
             _pathGetter = pathGetter;
+            _uuidGetter = uuidGetter;
             Name = name;
         }
 
         public async Task<IEnumerable<string>> GetDiskPathsAsync()
         {
             return await _pathGetter.GetDiskPathsAsync(Name);
+        }
+
+        internal async Task<string> GetDiskUuidAsync(string filePath)
+        {
+            return await _uuidGetter.GetDiskUuidAsync(filePath);
         }
 
         public void Start()

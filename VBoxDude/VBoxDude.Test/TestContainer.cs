@@ -17,6 +17,7 @@ namespace VBoxDude.Test
     {
         public Mock<IConfiguration> Config { get; } = new Mock<IConfiguration>();
         public Mock<IDiskPathGetter> DiskPathGetter { get; } = new Mock<IDiskPathGetter>();
+        public Mock<IDiskUuidGetter> DiskUuidGetter { get; } = new Mock<IDiskUuidGetter>();
         public Mock<IFileSystem> FileSystem { get; } = new Mock<IFileSystem>();
         public Mock<IProcessRunner> ProcessRunner { get; } = new Mock<IProcessRunner>();
         public Mock<IVirtualMachineImporter> VirtualMachineImporter { get; } = new Mock<IVirtualMachineImporter>();
@@ -25,6 +26,7 @@ namespace VBoxDude.Test
         {
             this.RegisterInstance(Config.Object);
             this.RegisterInstance(DiskPathGetter.Object);
+            this.RegisterInstance(DiskUuidGetter.Object);
             this.RegisterInstance(FileSystem.Object);
             this.RegisterInstance(ProcessRunner.Object);
             this.RegisterInstance<IUnityContainer>(this);
@@ -35,7 +37,8 @@ namespace VBoxDude.Test
                     c.Resolve<IConfiguration>(),
                     c.Resolve<IUnityContainer>(),
                     c.Resolve<IProcessRunner>(),
-                    c.Resolve<IDiskPathGetter>());
+                    c.Resolve<IDiskPathGetter>(),
+                    c.Resolve<IDiskUuidGetter>());
             }));
             this.RegisterType<VirtualMachineImporter>(new InjectionFactory(c =>
             {

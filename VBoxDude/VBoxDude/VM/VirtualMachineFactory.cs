@@ -15,6 +15,7 @@ namespace VBoxDude.VM
         private IConfiguration _config;
         private IUnityContainer _container;
         private IDiskPathGetter _pathGetter;
+        private IDiskUuidGetter _uuidGetter;
         private IVirtualMachineImporter _importer;
         private IProcessRunner _runner;
 
@@ -34,17 +35,19 @@ namespace VBoxDude.VM
             IConfiguration config,
             IUnityContainer container,
             IProcessRunner runner,
-            IDiskPathGetter pathGetter)
+            IDiskPathGetter pathGetter,
+            IDiskUuidGetter uuidGetter)
         {
             _config = config;
             _container = container;
             _runner = runner;
             _pathGetter = pathGetter;
+            _uuidGetter = uuidGetter;
         }
 
         public VirtualMachine CreateFromName(string name)
         {
-            var vm = new VirtualMachine(_config, _runner, _pathGetter, name);
+            var vm = new VirtualMachine(_config, _runner, _pathGetter, _uuidGetter, name);
             return vm;
         }
 
